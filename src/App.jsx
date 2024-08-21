@@ -89,7 +89,7 @@ const App = () => {
 
       // Send translation result to the backend
       await fetch(
-        "https://translation-app-2qum.onrender.com",
+        "https://translation-app-ooq8.onrender.com/api/translations",
         {
           method: "POST",
           headers: {
