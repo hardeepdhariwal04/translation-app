@@ -12,10 +12,10 @@ app.use(bodyParser.json());
 
 // Database connection
 const pool = new Pool({
-  user: "db_g1nc_user",
-  host: "dpg-cqqhmaggph6c738bv340-a",
-  database: "db_g1nc",
-  password: "S47FmwkrBEJtlbSLAOBvMDW9BDU7EOv5",
+  user: "translation_app_wz5g_user",
+  host: "dpg-cro3r1e8ii6s73f2frkg-a",
+  database: "translation_app_wz5g",
+  password: "bnhLD4U0f2YG1NDEJsbKwDvfFkMS2m7C",
   port: 5432,
 });
 
