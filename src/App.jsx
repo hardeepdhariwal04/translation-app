@@ -3,6 +3,11 @@ import "./App.css";
 import { Configuration, OpenAIApi } from "openai";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { BeatLoader } from "react-spinners";
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const App = () => {
   const [formData, setFormData] = useState({
@@ -21,6 +26,7 @@ const App = () => {
     apiKey: import.meta.env.VITE_OPENAI_KEY,
   });
   const openai = new OpenAIApi(configuration);
+
 
   const supportedLanguages = {
     "gpt-3.5-turbo": ["Spanish", "French", "German", "Italian", "Portuguese", "Dutch", "Russian", "Chinese (Simplified)", "Japanese", "Swedish", "Arabic", "Turkish", "Korean", "Hindi", "Greek", "Hebrew", "Thai", "Vietnamese", "Indonesian", "Malay"],

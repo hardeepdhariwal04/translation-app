@@ -18,6 +18,15 @@ const pool = new Pool({
   },
 });
 
+// Test the connection to the database to make sure it works
+pool.connect((err) => {
+  if (err) {
+    console.error('Failed to connect to the database:', err.stack);
+  } else {
+    console.log('Connected to the database.');
+  }
+});
+
 // Function to create the table if it doesn't exist
 const createTableIfNotExists = async () => {
   const createTableQuery = `
@@ -45,9 +54,12 @@ createTableIfNotExists();
 // Route for handling POST requests
 app.post('/api/translations', async (req, res) => {
   const { original_message, translated_message, language, model } = req.body;
+
+  // Log the incoming request body to verify the data is received correctly
+  console.log('Received data:', req.body);
+
   if (!original_message || !translated_message || !language || !model) {
-    res.status(400).json({ error: 'Missing required fields' });
-    return;
+    return res.status(400).json({ error: 'Missing required fields' });
   }
 
   try {
@@ -55,9 +67,10 @@ app.post('/api/translations', async (req, res) => {
       'INSERT INTO translations (original_message, translated_message, language, model) VALUES ($1, $2, $3, $4) RETURNING *',
       [original_message, translated_message, language, model]
     );
+    console.log('Insert successful:', result.rows[0]); // Log the inserted row
     res.status(201).json(result.rows[0]);
   } catch (error) {
-    console.error('Database insertion error:', error);
+    console.error('Database insertion error:', error);  // Log the exact error
     res.status(500).json({ error: 'Database insertion error' });
   }
 });
