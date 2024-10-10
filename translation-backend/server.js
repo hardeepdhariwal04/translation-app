@@ -10,14 +10,14 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Database connection
-const pool = new Pool({
-  user: "translation_app_wz5g_user",
-  host: "dpg-cro3r1e8ii6s73f2frkg-a",
-  database: "translation_app_wz5g",
-  password: "bnhLD4U0f2YG1NDEJsbKwDvfFkMS2m7C",
-  port: 5432,
-});
+// // Database connection
+// const pool = new Pool({
+//   user: "my_postgres_mda8_user",
+//   host: "dpg-cs30bn9u0jms7391lq5g-a",
+//   database: "my_postgres_mda8",
+//   password: "viFQtpBhnVhEwyB2XZh8qXtNPNrrauTj",
+//   port: 5432,
+// });
 
 // Function to create the table if it doesn't exist
 const createTableIfNotExists = async () => {
