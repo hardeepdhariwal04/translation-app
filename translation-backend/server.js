@@ -10,22 +10,13 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// // Database connection
-// const pool = new Pool({
-//   user: "my_postgres_mda8_user",
-//   host: "dpg-cs30bn9u0jms7391lq5g-a",
-//   database: "my_postgres_mda8",
-//   password: "viFQtpBhnVhEwyB2XZh8qXtNPNrrauTj",
-//   port: 5432,
-// });
-// Database connection using the connection string from the environment variables
+// Database connection using the connection string from the environment variables or fallback hardcoded string
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || process.env.SUPABASE_DATABASE_URL,  // Use your environment variable here
+  connectionString: process.env.DATABASE_URL || 'postgresql://postgres.kmujxmbinptxieuohrbj:silent%40penguin95@aws-0-us-east-1.pooler.supabase.com:6543/postgres', // Make sure special characters like '@' are URL encoded
   ssl: {
-    rejectUnauthorized: false,  // Supabase databases often require SSL, so this ensures a secure connection
+    rejectUnauthorized: false,  // Supabase requires SSL
   },
 });
-
 
 // Function to create the table if it doesn't exist
 const createTableIfNotExists = async () => {
