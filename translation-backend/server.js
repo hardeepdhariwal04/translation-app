@@ -18,6 +18,14 @@ app.use(bodyParser.json());
 //   password: "viFQtpBhnVhEwyB2XZh8qXtNPNrrauTj",
 //   port: 5432,
 // });
+// Database connection using the connection string from the environment variables
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL || process.env.SUPABASE_DATABASE_URL,  // Use your environment variable here
+  ssl: {
+    rejectUnauthorized: false,  // Supabase databases often require SSL, so this ensures a secure connection
+  },
+});
+
 
 // Function to create the table if it doesn't exist
 const createTableIfNotExists = async () => {
