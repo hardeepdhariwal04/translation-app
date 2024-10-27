@@ -12,14 +12,15 @@
   "dependencies": {
     "@google/generative-ai": "^0.17.0",
     "@supabase/supabase-js": "^2.45.4",
+    "axios": "^1.7.7",
     "deepl-node": "^1.13.1",
     "dotenv": "^16.4.5",
     "openai": "^3.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.27.0",
     "react-select": "^5.8.1",
     "react-spinners": "^0.13.8"
-    
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
